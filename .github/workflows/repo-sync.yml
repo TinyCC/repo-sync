@@ -7,13 +7,11 @@ jobs:
   repo-sync:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-      with:
-        persist-credentials: false
     - name: repo-sync
-      uses: repo-sync/github-sync@v2
+      uses: wei/git-sync@v2
       with:
-         source_repo: "https://repo.or.cz/tinycc.git"
-         source_branch: "mob"
-         destination_branch: "mob"
-         github_token: ${{ secrets.PAT }}
+        source_repo: "https://repo.or.cz/tinycc.git"
+        source_branch: "mob"
+        destination_repo: "git@github.com:TinyCC/tinycc.git"
+        destination_branch: "mob"
+        ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
